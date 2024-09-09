@@ -21,4 +21,38 @@
             </tree>
         </field>
     </record>
+
+    <record id="estate_property_form" model="ir.iu.view">
+        <field name="name">Estate property form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Estate property">
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description"/>
+                            <field name="bedrooms"/>
+                            <field name="living_area" string="Living Area (sqm)"/>
+                            <field name="facades"/>
+                            <field name="garage"/>
+                            <field name="garden"/>
+                            <field name="garden_area" string="Gareden Area (sqm)"/>
+                            <field name="garden_orientation"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>
