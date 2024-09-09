@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+import logging
+_logger = logging.getLogger(__name__)
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -51,6 +53,6 @@ class EstateProperty(models.Model):
     def _compute_best_offer(self):
         for record in self:
             price_list = record.offer_ids.mapped('price')
-            if price_list:
-                record.best_price = max(price_list)
+            _logger.warning("PRICELIST: %s", price_list)
+
 
