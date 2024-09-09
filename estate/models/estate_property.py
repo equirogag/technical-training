@@ -4,7 +4,7 @@ class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = "Modelo de prueba"
 
-    name = fields.CharI()
+    name = fields.Char()
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date()
