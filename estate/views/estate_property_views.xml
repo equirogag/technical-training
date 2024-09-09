@@ -19,7 +19,7 @@
                 <field name="selling_price"></field>
                 <field name="date_availability" string="Availability From"></field>
                 <field name="property_type_id"/>
-                <field name="tag_ids" string="Tags"/>
+                <field name="tag_ids" string="Tags" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
