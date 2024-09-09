@@ -8,7 +8,7 @@
 
     <record id="estate_property_tree" model="ir.ui.view">
         <field name="name">Estate property tree</field>
-        <field name="res_model">estate.property</field>
+        <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <tree name="Estate properties">
                 <field name="name" string="Title"></field>
