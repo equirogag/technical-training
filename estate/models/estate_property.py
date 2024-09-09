@@ -55,4 +55,9 @@ class EstateProperty(models.Model):
             price_list = record.offer_ids.mapped('price')
             _logger.warning("PRICELIST: %s", price_list)
 
+            if not price_list:
+                record.best_price = 0.0
+            else:
+                record.best_price = max(price_list)
+
 
