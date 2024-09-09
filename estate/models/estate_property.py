@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -40,6 +40,7 @@ class EstateProperty(models.Model):
 
     total_area = fields.Integer(readonly=True, string="Total Area (sqm)", compute="_compute_total_area")
 
+    @api.depends("living_area", "garden_area")
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.living_area + record.garden_area
