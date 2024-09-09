@@ -55,7 +55,7 @@
                                     <field name="garden"/>
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
-                                    <field name="tota_area"/>
+                                    <field name="total_area"/>
                                 </group>
                                 <group>
 
