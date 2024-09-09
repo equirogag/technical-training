@@ -40,7 +40,16 @@ class EstateProperty(models.Model):
 
     total_area = fields.Integer(readonly=True, string="Total Area (sqm)", compute="_compute_total_area")
 
+    best_price = fields.Float(readonly=True, string="Best Offer", compute="_compute_best_offer")
+
     @api.onchange("living_area", "garden_area")
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.living_area + record.garden_area
+
+    @api.depends("offer_ids.price")
+    def _compute_best_offer(self):
+        for record in self:
+            price_list = record.offer_ids.mapped('price')
+            record.best_price = max(price_list)
+
