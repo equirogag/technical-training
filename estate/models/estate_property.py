@@ -5,17 +5,18 @@ class EstateProperty(models.Model):
     _description = "Modelo de prueba"
 
     name = fields.Char(required=True)
-    description = fields.Text()
-    postcode = fields.Char()
-    expected_price = fields.Float(required=True)
-    selling_price = fields.Float(readonly=True, copy=False)
-    bedrooms = fields.Integer(default=2)
-    living_area = fields.Integer()
-    facades = fields.Integer()
-    garage = fields.Boolean()
-    garden = fields.Boolean()
-    garden_area = fields.Integer()
+    description = fields.Text(string="Description")
+    postcode = fields.Char(string="Postcode")
+    expected_price = fields.Float(string="Expected Price", required=True)
+    selling_price = fields.Float(string="Selling Price", readonly=True, copy=False)
+    bedrooms = fields.Integer(string="Bedrooms", default=2)
+    living_area = fields.Integer(string="Living Area (sqm)")
+    facades = fields.Integer(string="Facades")
+    garage = fields.Boolean(string="Garage")
+    garden = fields.Boolean(string="Garden")
+    garden_area = fields.Integer(string="Gareden Area (sqm)")
     garden_orientation = fields.Selection(
+        string="Garden Orientarion",
         selection = [('north', 'North'),('south','South'),('east','East'), ('west','West')]
     )
     active= fields.Boolean(default=True)
@@ -26,4 +27,4 @@ class EstateProperty(models.Model):
         copy=False
     )
 
-    date_availability = fields.Date(default=fields.Date.add(fields.Date.today(), months=3), copy=False)
+    date_availability = fields.Date(string="Available From", default=fields.Date.add(fields.Date.today(), months=3), copy=False)
