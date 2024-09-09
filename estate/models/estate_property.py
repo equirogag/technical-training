@@ -27,6 +27,7 @@ class EstateProperty(models.Model):
     )
 
     def default_date_availability(self):
-        self.date_availability.add(fields.Date.today, months=3)
+        self.date_availability = fields.Date.today
+        self.date_availability.add(self.date_availability, months=3)
 
     date_availability = fields.Date(default=default_date_availability, copy=False)
