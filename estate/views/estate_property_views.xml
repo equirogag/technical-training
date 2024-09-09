@@ -22,7 +22,7 @@
         </field>
     </record>
 
-    <record id="estate_property_form" model="ir.iu.view">
+    <record id="estate_property_form" model="ir.ui.view">
         <field name="name">Estate property form</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
