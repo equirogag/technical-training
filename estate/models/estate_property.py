@@ -55,7 +55,7 @@ class EstateProperty(models.Model):
     def _check_selling_price(self):
         for record in self:
             min_percent = round(record.expected_price * 0.9, 3)
-            if record.selling_price < min_percent and not float_is_zero(record.selling_price):
+            if record.selling_price < min_percent and not float_is_zero(record.selling_price, 3):
                 raise ValidationError("The selling price cannot be lower than the 90% of the expected price")
 
     @api.depends("living_area", "garden_area")
