@@ -31,12 +31,12 @@ class EstatePropertyOffer(models.Model):
             record.validity = (record.date_deadline - fields.Date.today()).days
 
     def accept_offer(self):
-        if self.state == 'accepted':
+        if self.status == 'accepted':
             raise UserError("You can't accept more than one oferr per property")
         else:
-            self.state = 'accepted'
+            self.status = 'accepted'
             self.property_id.buyer = self.partner_id.id
             self.property_id.selling_price = self.price
 
     def refuse_offer(self):
-        self.state = 'refused'
+        self.status = 'refused'
