@@ -39,7 +39,6 @@
                     <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
-                            <field name="state" invisible="1"/>
                             <field name="property_type_id"/>
                             <field name="postcode"/>
                             <field name="date_availability"/>
