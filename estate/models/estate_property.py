@@ -44,7 +44,7 @@ class EstateProperty(models.Model):
 
     best_price = fields.Float(readonly=True, string="Best Offer", compute="_compute_best_offer")
 
-    @api.onchange("living_area", "garden_area")
+    @api.depends("living_area", "garden_area")
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.living_area + record.garden_area
@@ -57,5 +57,14 @@ class EstateProperty(models.Model):
                 record.best_price = 0.0
             else:
                 record.best_price = max(price_list)
+
+    @api.onchange("garden")
+    def _onchange_garden(self):
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = 'north'
+        else:
+            self.garden_area = 0
+            self.garden_orientation = None
 
 
