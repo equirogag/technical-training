@@ -47,9 +47,9 @@ class EstateProperty(models.Model):
     best_price = fields.Float(readonly=True, string="Best Offer", compute="_compute_best_offer")
 
     _sql_constraints = [
-        ('positive_expeceted_price', 'CHECK(expected_price >= 0)', 'The expected price must be postive'),
-        ('positive_selling_price', 'CHECK(selling_price >= 0)', 'The selling price must be positive')
-    ] 
+        ('expected_price', 'CHECK(expected_price >= 0)', 'The expected price must be postive'),
+        ('selling_price', 'CHECK(selling_price >= 0)', 'The selling price must be positive')
+    ]
 
     @api.constrains("expected_price", "selling_price")
     def _check_selling_price(self):
