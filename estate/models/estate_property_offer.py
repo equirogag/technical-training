@@ -32,8 +32,9 @@ class EstatePropertyOffer(models.Model):
             record.validity = (record.date_deadline - fields.Date.today()).days
 
     def accept_offer(self):
-        if self.status == 'accepted':
-            raise UserError("You can't accept more than one oferr per property")
+        accepted_offer =  self.env['estate.property.offer'].search([('status','=','accepted'), ('property_id', '=', self.property_id.id)], limit=1)
+        if accepted_offer:
+            raise UserError("You can't accept more than one offer per property")
         else:
             self.status = 'accepted'
             self.property_id.buyer = self.partner_id.id
