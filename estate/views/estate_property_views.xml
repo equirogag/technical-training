@@ -12,6 +12,7 @@
         <field name="arch" type="xml">
             <tree name="Estate properties" decoration-success="state in ('offer_received', 'offer_accepted')" decoration-bf="state == 'offer_accepted'" decoration-muted="state == 'sold'">
                 <field name="name" string="Title"></field>
+                <field name="state" invisible="1"/>
                 <field name="postcode"></field>
                 <field name="bedrooms"></field>
                 <field name="living_area" string="Living Area (sqm)"></field>
