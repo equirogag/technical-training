@@ -5,11 +5,6 @@
         <field name="name">Offers</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('property_type_id', '=', active_id)]</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No Offers Created
-            </p>
-        </field>
     </record>
 
     <record id="estate_property_offer_tree" model="ir.ui.view">

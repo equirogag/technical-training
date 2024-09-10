@@ -24,7 +24,7 @@
             <form string="Estate property type">
                 <sheet>
                     <h1><field name="name"/></h1>
-                    <button name="act_estate_property_offer"
+                    <button name="estate.act_estate_property_offer"
                         type="action"
                         icon="fa-money">
                         <field string="Offer(s)" name="offer_count" widget="statinfo"/>
