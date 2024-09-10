@@ -69,7 +69,7 @@
                             </group>
                         </page>
                         <page name="offers" string="Offers">
-                            <field name="offer_ids" mode="tree" readonly="state in (offer_accepted, canceled, sold)">
+                            <field name="offer_ids" mode="tree" readonly="state in ('offer_accepted', 'canceled', 'sold')">
                                 <form>
                                     <group>
                                         <group>
