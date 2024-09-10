@@ -30,8 +30,8 @@
         <field name="arch" type="xml">
             <form string="Estate property">
                 <header>
-                    <button string="Cancel" name="cancel" type="object"/>
-                    <button string="Sold" name="sold" type="object"/>
+                    <button string="Cancel" name="cancel_property" type="object"/>
+                    <button string="Sold" name="sold_property" type="object"/>
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
@@ -90,6 +90,8 @@
                                     <field name="validity"/>
                                     <field name="date_deadline"/>
                                     <field name="status"/>
+                                    <button name="accept_offer" string="Accept" states="new,offer_received" type="object" icon="fa-check"/>
+                                    <button name="refuse_offer" string="Refuse" states="new,offer_received" type="object" icon="fa-times"/>
                                 </tree>
                             </field>                           
                         </page>

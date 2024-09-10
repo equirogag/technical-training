@@ -68,14 +68,14 @@ class EstateProperty(models.Model):
             self.garden_area = 0
             self.garden_orientation = None
 
-    def cancel(self):
+    def cancel_property(self):
         if self.state == 'sold':
             raise UserError("Sold properties cannot be canceled")
         else:
             self.state = 'canceled'
             return True
 
-    def sold(self):
+    def sold_property(self):
         if self.state == 'canceled':
             raise UserError('Canceled properties cannot be sold')
         else:
