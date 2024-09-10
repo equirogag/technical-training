@@ -97,4 +97,9 @@ class EstateProperty(models.Model):
             self.state = 'sold'
             return True
 
+    @api.ondelete
+    def _ondelete_property(self):
+        for record in self:
+            if record.state != 'new' and record.state != 'canceled':
+                raise UserError("You only can delete properties in New and Canceled states")
 
