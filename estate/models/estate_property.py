@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ class EstateProperty(models.Model):
     )
     active= fields.Boolean(default=True)
     state= fields.Selection(
-        selection = [('new', 'New'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('sold', 'Sold'), ('cancelled', 'Cancelled')],
+        selection = [('new', 'New'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('sold', 'Sold'), ('canceled', 'Canceled')],
         default='new',
         required=True,
         copy=False
@@ -66,5 +67,19 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = None
+
+    def cancel(self):
+        if self.state == 'sold':
+            raise UserError("Sold properties cannot be canceled")
+        else:
+            self.state = 'canceled'
+            return True
+
+    def sold(self):
+        if self.state == 'canceled':
+            raise UserError('Canceled properties cannot be sold')
+        else:
+            self.state = 'sold'
+            return True
 
 
