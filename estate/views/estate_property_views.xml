@@ -30,8 +30,8 @@
         <field name="arch" type="xml">
             <form string="Estate property">
                 <header>
-                    <button string="Cancel" name="cancel_property" type="object"/>
-                    <button string="Sold" name="sold_property" type="object"/>
+                    <button string="Cancel" name="cancel_property" type="object" invisible="state in ('sold','canceled')"/>
+                    <button string="Sold" name="sold_property" type="object" invisible="state in ('sold','canceled')"/>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                 </header>
                 <sheet>
