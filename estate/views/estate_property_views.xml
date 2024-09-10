@@ -17,7 +17,7 @@
                 <field name="living_area" string="Living Area (sqm)"></field>
                 <field name="expected_price"></field>
                 <field name="selling_price"></field>
-                <field name="date_availability" string="Availability From"></field>
+                <field name="date_availability" string="Availability From" optional="show"/>
                 <field name="property_type_id"/>
                 <field name="tag_ids" string="Tags" widget="many2many_tags" />
             </tree>
@@ -84,14 +84,14 @@
                                         </group>
                                     </group>
                                 </form>
-                                <tree>
+                                <tree editable="1">
                                     <field name="price"/>
                                     <field name="partner_id"/>
                                     <field name="validity"/>
                                     <field name="date_deadline"/>
                                     <field name="status"/>
-                                    <button name="accept_offer" string="Accept" states="new,offer_received" type="object" icon="fa-check" invisible="status is not None"/>
-                                    <button name="refuse_offer" string="Refuse" states="new,offer_received" type="object" icon="fa-times" invisible="status"/>
+                                    <button name="accept_offer" string="Accept" type="object" icon="fa-check" invisible="status in ('accepted', 'refused')"/>
+                                    <button name="refuse_offer" string="Refuse" type="object" icon="fa-times" invisible="status in ('accepted', 'refused')"/>
                                 </tree>
                             </field>                           
                         </page>
